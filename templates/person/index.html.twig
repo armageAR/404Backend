@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personas
+{% endblock %}
+
+{% block body %}
+
+
+    <h1>Personas</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>MissingID</th>
+                <th>FullName</th>
+                <th>MissingSince</th>
+                <th>Birthdate</th>
+                <th>ResidenceCity</th>
+                <th>ReisdenceState</th>
+                <th>ImgUrl</th>
+                <th>ImgAge</th>
+                <th>SearchActive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in people %}
+                <tr>
+                    <td>{{ person.MissingID }}</td>
+                    <td>{{ person.fullName }}</td>
+                    <td>{{ person.missingSince ? person.missingSince|date('Y-m-d') : '' }}</td>
+                    <td>{{ person.birthdate ? person.birthdate|date('Y-m-d') : '' }}</td>
+                    <td>{{ person.residenceCity }}</td>
+                    <td>{{ person.reisdenceState }}</td>
+                    <td>{{ person.imgUrl }}</td>
+                    <td>{{ person.imgAge }}</td>
+                    <td>{{ person.searchActive ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <a href="{{ path('person_show', {'id': person.id}) }}" class="btn btn-small btn-dark m-1">show</a>
+                        <a href="{{ path('person_edit', {'id': person.id}) }}" class="btn btn-small btn-dark m-1">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">No hay personas registradas</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('person_new') }}" class="btn btn-danger">Importar</a>
+
+{% endblock %}

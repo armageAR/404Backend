@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Person{% endblock %}
+
+{% block body %}
+    <h1>Person</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ person.id }}</td>
+            </tr>
+            <tr>
+                <th>MissingID</th>
+                <td>{{ person.MissingID }}</td>
+            </tr>
+            <tr>
+                <th>FullName</th>
+                <td>{{ person.fullName }}</td>
+            </tr>
+            <tr>
+                <th>MissingSince</th>
+                <td>{{ person.missingSince ? person.missingSince|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{{ person.birthdate ? person.birthdate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ResidenceCity</th>
+                <td>{{ person.residenceCity }}</td>
+            </tr>
+            <tr>
+                <th>ReisdenceState</th>
+                <td>{{ person.reisdenceState }}</td>
+            </tr>
+            <tr>
+                <th>ImgUrl</th>
+                <td>{{ person.imgUrl }}</td>
+            </tr>
+            <tr>
+                <th>ImgAge</th>
+                <td>{{ person.imgAge }}</td>
+            </tr>
+            <tr>
+                <th>SearchActive</th>
+                <td>{{ person.searchActive ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('person_index') }}">back to list</a>
+
+    <a href="{{ path('person_edit', {'id': person.id}) }}">edit</a>
+
+    {{ include('person/_delete_form.html.twig') }}
+{% endblock %}

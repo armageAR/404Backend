@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Json Generado
+{% endblock %}
+
+{% block body %}
+    <h1>Json Generado para API NoEncontrado</h1>
+    <br>
+    <pre>{{ json|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Busquedas Activas
+{% endblock %}
+
+{% block body %}
+    <h1>Missing Children Argentina - Busquedas Activas</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FullName</th>
+                <th>MissingSince</th>
+                <th>Birthdate</th>
+                <th>Residence</th>
+                <th>ImgUrl</th>
+                <th>ImgAge</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for kid in kids %}
+                <tr>
+                    <td>{{kid.id}}</td>
+                    <td>{{kid.fullName}}</td>
+                    <td>{{kid.missingSince}}</td>
+                    <td>{{kid.birthdate}}</td>
+                    <td>{{kid.residenceCity}},
+                        {{kid.residenceState}}</td>
+                    <td>
+                        <img src="{{kid.imgUrl | raw}}" width="30" height="30">
+                    </td>
+                    <td>{{kid.imgAge}}</td>
+                    <td>&nbsp;</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">No se obtuvieron resultados</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
